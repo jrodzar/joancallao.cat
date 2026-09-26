@@ -26,6 +26,7 @@ async function inicia() {
 
   document.getElementById("titol-portada").textContent = textos.titol_portada || "";
   document.getElementById("text-sobre-mi").textContent = textos.sobre_mi || "";
+  mostraInstagram(textos.instagram);
 
   fotos = llista
     .filter(f => f && f.foto)
@@ -34,6 +35,24 @@ async function inicia() {
 
   pintaFiltres();
   pinta();
+}
+
+// Accepta "nom", "@nom" o l'adreça sencera del perfil
+function mostraInstagram(valor) {
+  const usuari = (valor || "")
+    .trim()
+    .replace(/^https?:\/\/(www\.)?instagram\.com\//, "")
+    .replace(/^@/, "")
+    .replace(/\/.*$/, "");
+  if (!usuari) return;
+
+  const url = `https://www.instagram.com/${usuari}/`;
+  document.querySelectorAll(".enllac-instagram").forEach(a => {
+    a.href = url;
+    a.hidden = false;
+    if (!a.textContent) a.textContent = `@${usuari}`;
+  });
+  document.querySelector(".segueix-me").hidden = false;
 }
 
 // Botons de filtre, a partir dels temes de la llista

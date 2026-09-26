@@ -24,7 +24,8 @@ a { color: inherit; text-decoration: none; }
   background: rgba(15, 15, 16, .85);
   backdrop-filter: blur(8px);
 }
-.logo { font-weight: 700; letter-spacing: .15em; }
+.logo { font-weight: 700; letter-spacing: .15em; white-space: nowrap; }
+.capcalera nav { white-space: nowrap; }
 .capcalera nav a { margin-left: 22px; color: var(--suau); }
 .capcalera nav a:hover { color: var(--text); }
 
@@ -56,6 +57,8 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 .sobre-mi { max-width: 680px; margin: 0 auto; padding: 96px 24px; }
 .sobre-mi h2 { color: var(--accent); }
 .sobre-mi p { white-space: pre-line; font-size: 1.15rem; color: #d6d3cc; }
+.segueix-me a { color: var(--accent); }
+.segueix-me a:hover { text-decoration: underline; }
 
 .peu { text-align: center; color: var(--suau); font-size: .85rem; padding: 32px 24px; border-top: 1px solid #222; }
 
@@ -79,6 +82,8 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
 @media (max-width: 600px) {
   .capcalera { padding: 14px 16px; }
+  .logo { letter-spacing: .08em; font-size: .9rem; }
+  .capcalera nav a { margin-left: 12px; font-size: .9rem; }
   .portada, main { padding-left: 16px; padding-right: 16px; }
   .graella { columns: 2; column-gap: 8px; }
   .foto { margin-bottom: 8px; }

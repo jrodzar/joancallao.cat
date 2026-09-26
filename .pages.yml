@@ -42,3 +42,7 @@ content:
       - name: sobre_mi
         label: Sobre mi
         type: text
+      - name: instagram
+        label: Usuari d'Instagram
+        description: Només el nom, sense @. Si el deixes buit, l'enllaç no surt al web.
+        type: string
