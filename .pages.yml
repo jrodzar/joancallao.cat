@@ -1,0 +1,44 @@
+# Configuració del panell d'edició Pages CMS (https://app.pagescms.org)
+
+media:
+  input: fotos
+  output: fotos
+  categories: [image]
+  rename: random
+
+content:
+  - name: fotos
+    label: Fotos
+    description: Les fotos del web, en l'ordre en què surten.
+    type: file
+    path: dades/fotos.json
+    format: json
+    list: true
+    fields:
+      - name: foto
+        label: Foto
+        type: image
+        required: true
+      - name: titol
+        label: Títol
+        type: string
+      - name: tema
+        label: Tema
+        description: Serveix per als botons de filtre del web.
+        type: select
+        options:
+          values: [natura, ciutat, animals, persones, esport, viatges, altres]
+
+  - name: textos
+    label: Textos
+    type: file
+    path: dades/textos.json
+    format: json
+    fields:
+      - name: titol_portada
+        label: Títol de la portada
+        description: El text gran de dalt de tot. Pots fer salts de línia.
+        type: text
+      - name: sobre_mi
+        label: Sobre mi
+        type: text

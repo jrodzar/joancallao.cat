@@ -6,10 +6,10 @@
 - Per canviar el web n'hi ha prou de pujar fitxers nous al repositori; es publica sol en un minut.
 - Limitació: el repositori ha de ser públic amb el compte gratuït, i el total ha de quedar per sota d'1 GB (unes 500 fotos de 2000 px, de sobres).
 
-## 1. Repositori a GitHub (ho puc fer jo quan m'ho diguis)
-- Repositori públic `jrodzar/joancallao.cat` amb aquests fitxers.
-- Settings → Pages → Source: "Deploy from a branch", branca `main`, carpeta `/ (root)`.
-- Custom domain: `joancallao.cat` (el fitxer CNAME ja hi és).
+## 1. Repositori a GitHub
+- Repositori públic `jrodzar/joancallao.cat`.
+- Settings → Pages → Source: **GitHub Actions** (el web el publica el flux `publicar.yml`, que abans prepara les fotos).
+- Custom domain: `joancallao.cat`.
 
 ## 2. DNS a DonDominio (ho has de fer tu, al panell)
 Panell de DonDominio → Dominis → joancallao.cat → Zona DNS (o "Gestió DNS").

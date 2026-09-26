@@ -1,34 +1,67 @@
+// Les fotos i els textos es llegeixen de la carpeta "dades".
+// Es poden editar des del panell de Pages CMS (app.pagescms.org).
+
 const graella = document.querySelector(".graella");
 const filtres = document.querySelector(".filtres");
 const visor = document.querySelector(".visor");
 const visorImg = visor.querySelector("img");
 const visorText = visor.querySelector("figcaption");
 
-let visibles = FOTOS;
+let fotos = [];
+let visibles = [];
 let actual = 0;
 
 document.getElementById("any").textContent = new Date().getFullYear();
 
+async function llegeix(fitxer) {
+  const resposta = await fetch(fitxer, { cache: "no-cache" });
+  return resposta.json();
+}
+
+async function inicia() {
+  const [llista, textos] = await Promise.all([
+    llegeix("dades/fotos.json"),
+    llegeix("dades/textos.json"),
+  ]);
+
+  document.getElementById("titol-portada").textContent = textos.titol_portada || "";
+  document.getElementById("text-sobre-mi").textContent = textos.sobre_mi || "";
+
+  fotos = llista
+    .filter(f => f && f.foto)
+    .map(f => ({ ...f, tema: (f.tema || "").trim().toLowerCase() }));
+  visibles = fotos;
+
+  pintaFiltres();
+  pinta();
+}
+
 // Botons de filtre, a partir dels temes de la llista
-const temes = ["totes", ...new Set(FOTOS.map(f => f.tema).filter(Boolean))];
-temes.forEach(tema => {
-  const b = document.createElement("button");
-  b.textContent = tema;
-  b.onclick = () => {
-    filtres.querySelectorAll("button").forEach(x => x.classList.toggle("actiu", x === b));
-    visibles = tema === "totes" ? FOTOS : FOTOS.filter(f => f.tema === tema);
-    pinta();
-  };
-  if (tema === "totes") b.classList.add("actiu");
-  filtres.appendChild(b);
-});
+function pintaFiltres() {
+  const temes = ["totes", ...new Set(fotos.map(f => f.tema).filter(Boolean))];
+  temes.forEach(tema => {
+    const b = document.createElement("button");
+    b.textContent = tema;
+    b.onclick = () => {
+      filtres.querySelectorAll("button").forEach(x => x.classList.toggle("actiu", x === b));
+      visibles = tema === "totes" ? fotos : fotos.filter(f => f.tema === tema);
+      pinta();
+    };
+    if (tema === "totes") b.classList.add("actiu");
+    filtres.appendChild(b);
+  });
+}
 
 function pinta() {
   graella.innerHTML = "";
   visibles.forEach((foto, i) => {
     const b = document.createElement("button");
     b.className = "foto";
-    b.innerHTML = `<img src="fotos/${foto.fitxer}" alt="${foto.titol || ""}" loading="lazy">`;
+    const img = document.createElement("img");
+    img.src = foto.foto;
+    img.alt = foto.titol || "";
+    img.loading = "lazy";
+    b.appendChild(img);
     b.onclick = () => obre(i);
     graella.appendChild(b);
   });
@@ -37,7 +70,7 @@ function pinta() {
 function obre(i) {
   actual = (i + visibles.length) % visibles.length;
   const foto = visibles[actual];
-  visorImg.src = `fotos/${foto.fitxer}`;
+  visorImg.src = foto.foto;
   visorImg.alt = foto.titol || "";
   visorText.textContent = foto.titol || "";
   visor.hidden = false;
@@ -71,4 +104,4 @@ visor.addEventListener("touchend", e => {
   xInici = null;
 });
 
-pinta();
+inicia();
