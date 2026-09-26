@@ -18,10 +18,25 @@ async function llegeix(fitxer) {
   return resposta.json();
 }
 
+// La llista de temes la genera GitHub Actions en publicar; si no hi és, es fan servir els de les fotos
+async function llegeixTemes() {
+  try {
+    const temes = await llegeix("dades/llista-temes.json");
+    return Array.isArray(temes) ? temes.map(normalitza).filter(Boolean) : null;
+  } catch {
+    return null;
+  }
+}
+
+function normalitza(tema) {
+  return String(tema || "").trim().toLowerCase();
+}
+
 async function inicia() {
-  const [llista, textos] = await Promise.all([
+  const [llista, textos, temes] = await Promise.all([
     llegeix("dades/fotos.json"),
     llegeix("dades/textos.json"),
+    llegeixTemes(),
   ]);
 
   document.getElementById("titol-portada").textContent = textos.titol_portada || "";
@@ -30,10 +45,10 @@ async function inicia() {
 
   fotos = llista
     .filter(f => f && f.foto)
-    .map(f => ({ ...f, tema: (f.tema || "").trim().toLowerCase() }));
+    .map(f => ({ ...f, tema: normalitza(f.tema) }));
   visibles = fotos;
 
-  pintaFiltres();
+  pintaFiltres(temes);
   pinta();
 }
 
@@ -55,9 +70,11 @@ function mostraInstagram(valor) {
   document.querySelector(".segueix-me").hidden = false;
 }
 
-// Botons de filtre, a partir dels temes de la llista
-function pintaFiltres() {
-  const temes = ["totes", ...new Set(fotos.map(f => f.tema).filter(Boolean))];
+// Botons de filtre: els temes de la llista que tenen alguna foto
+function pintaFiltres(llistaTemes) {
+  const temesAmbFotos = new Set(fotos.map(f => f.tema).filter(Boolean));
+  const ordre = llistaTemes || [...temesAmbFotos];
+  const temes = ["totes", ...new Set(ordre.filter(t => temesAmbFotos.has(t)))];
   temes.forEach(tema => {
     const b = document.createElement("button");
     b.textContent = tema;

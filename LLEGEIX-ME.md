@@ -11,10 +11,10 @@ Web estàtic: només HTML, CSS i JavaScript. No cal cap servidor ni base de dade
 
 ### Temes (els botons de filtre)
 
-Cada foto té un tema escrit a mà. Els botons de filtre del web surten sols a partir dels temes de les fotos:
-- Per crear un tema nou, escriu-lo en alguna foto.
-- Per esborrar-ne un, canvia'l a totes les fotos que el tenen (o esborra aquestes fotos).
-- Majúscules i espais no importen ("Natura" i "natura" són el mateix), però "animal" i "animals" serien dos temes diferents.
+Els temes es gestionen a l'apartat **Temes** del panell, i a cada foto es trien d'un desplegable.
+- Per crear un tema nou: a **Temes**, afegeix-ne un i desa. Després ja surt al desplegable de les fotos.
+- Per esborrar un tema: esborra'l a **Temes**. El botó desapareix del web i les fotos que el tenien només surten a "Totes".
+- Al web només surten els temes que tenen alguna foto.
 
 No cal preocupar-se de la mida de les fotos: en publicar, es redueixen soles a 2000 px
 i se'ls esborra la ubicació GPS i la resta de metadades. Les fotos HEIC de l'iPhone es passen a JPG.
@@ -28,8 +28,10 @@ Per no publicar mai la ubicació, desactiva-la a la configuració de la càmera 
 - `estil.css`: colors i disseny (els colors principals són a dalt de tot).
 - `galeria.js`: la graella, els filtres i el visor de fotos.
 - `dades/fotos.json`: la llista de fotos (títol i tema de cadascuna).
-- `dades/textos.json`: els textos de la portada i de "Sobre mi".
+- `dades/textos.json`: els textos de la portada, "Sobre mi" i l'Instagram.
+- `dades/temes/`: un fitxer per a cada tema.
 - `fotos/`: les fotos.
 - `.pages.yml`: la configuració del panell Pages CMS.
 - `eines/prepara_fotos.py`: redueix les fotos i n'esborra les metadades.
+- `eines/llista_temes.py`: fa la llista de temes que llegeix el web.
 - `.github/workflows/publicar.yml`: prepara les fotos i publica el web cada vegada que hi ha un canvi.

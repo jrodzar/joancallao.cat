@@ -24,8 +24,30 @@ content:
         type: string
       - name: tema
         label: Tema
-        description: Una paraula, per exemple natura. Cada tema diferent és un botó de filtre al web.
+        description: Tria'n un de la llista. Per crear-ne de nous, ves a l'apartat Temes.
+        type: reference
+        options:
+          collection: temes
+          value: "{nom}"
+          label: "{nom}"
+          search: nom
+
+  - name: temes
+    label: Temes
+    description: Els botons de filtre del web. Si n'esborres un, el botó desapareix.
+    type: collection
+    path: dades/temes
+    format: json
+    filename: "{nom}.json"
+    view:
+      primary: nom
+      fields: [nom]
+      sort: [nom]
+    fields:
+      - name: nom
+        label: Nom del tema
         type: string
+        required: true
 
   - name: textos
     label: Textos
