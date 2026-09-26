@@ -24,10 +24,8 @@ content:
         type: string
       - name: tema
         label: Tema
-        description: Serveix per als botons de filtre del web.
-        type: select
-        options:
-          values: [natura, ciutat, animals, persones, esport, viatges, altres]
+        description: Una paraula, per exemple natura. Cada tema diferent és un botó de filtre al web.
+        type: string
 
   - name: textos
     label: Textos
