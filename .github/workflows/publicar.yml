@@ -46,6 +46,10 @@ jobs:
       - name: Fa la llista de temes
         run: python eines/llista_temes.py
 
+      # Perquè els navegadors no barregin l'estil antic amb la pàgina nova
+      - name: Posa la versió als fitxers d'estil i de codi
+        run: sed -i "s/?v=dev/?v=${GITHUB_SHA::7}/g" index.html
+
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
