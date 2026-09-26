@@ -39,6 +39,7 @@ content:
     path: dades/temes
     format: json
     filename: "{nom}.json"
+    exclude: [.gitkeep]
     view:
       primary: nom
       fields: [nom]

@@ -75,6 +75,7 @@ function pintaFiltres(llistaTemes) {
   const temesAmbFotos = new Set(fotos.map(f => f.tema).filter(Boolean));
   const ordre = llistaTemes || [...temesAmbFotos];
   const temes = ["totes", ...new Set(ordre.filter(t => temesAmbFotos.has(t)))];
+  filtres.hidden = temes.length === 1;
   temes.forEach(tema => {
     const b = document.createElement("button");
     b.textContent = tema;

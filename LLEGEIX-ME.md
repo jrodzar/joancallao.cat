@@ -14,7 +14,7 @@ Web estàtic: només HTML, CSS i JavaScript. No cal cap servidor ni base de dade
 Els temes es gestionen a l'apartat **Temes** del panell, i a cada foto es trien d'un desplegable.
 - Per crear un tema nou: a **Temes**, afegeix-ne un i desa. Després ja surt al desplegable de les fotos.
 - Per esborrar un tema: esborra'l a **Temes**. El botó desapareix del web i les fotos que el tenien només surten a "Totes".
-- Al web només surten els temes que tenen alguna foto.
+- Al web només surten els temes que tenen alguna foto. Si no n'hi ha cap, no surt la barra de filtres.
 
 No cal preocupar-se de la mida de les fotos: en publicar, es redueixen soles a 2000 px
 i se'ls esborra la ubicació GPS i la resta de metadades. Les fotos HEIC de l'iPhone es passen a JPG.
