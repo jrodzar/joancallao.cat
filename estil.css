@@ -1,0 +1,86 @@
+:root {
+  --fons: #0f0f10;
+  --text: #f2f0eb;
+  --suau: #9a978f;
+  --accent: #ffcc33;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fons);
+  color: var(--text);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.capcalera {
+  position: sticky; top: 0; z-index: 5;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 24px;
+  background: rgba(15, 15, 16, .85);
+  backdrop-filter: blur(8px);
+}
+.logo { font-weight: 700; letter-spacing: .15em; }
+.capcalera nav a { margin-left: 22px; color: var(--suau); }
+.capcalera nav a:hover { color: var(--text); }
+
+.portada { padding: 72px 24px 40px; max-width: 1200px; margin: 0 auto; }
+.petit { color: var(--accent); text-transform: uppercase; letter-spacing: .2em; font-size: .8rem; margin: 0 0 12px; }
+.portada h1 { font-size: clamp(2.2rem, 7vw, 4.8rem); line-height: 1.05; margin: 0; }
+
+main { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+.filtres { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.filtres button {
+  font: inherit; text-transform: capitalize;
+  background: none; color: var(--suau);
+  border: 1px solid #333; border-radius: 99px;
+  padding: 6px 16px; cursor: pointer;
+}
+.filtres button:hover { color: var(--text); border-color: var(--suau); }
+.filtres button.actiu { background: var(--accent); color: #111; border-color: var(--accent); }
+
+.graella { columns: 3 320px; column-gap: 12px; }
+.foto {
+  display: block; width: 100%; margin: 0 0 12px; padding: 0;
+  border: 0; background: #1c1c1e; cursor: zoom-in;
+  break-inside: avoid; overflow: hidden; border-radius: 4px;
+}
+.foto img { display: block; width: 100%; height: auto; transition: transform .4s, opacity .4s; }
+.foto:hover img { transform: scale(1.03); opacity: .9; }
+
+.sobre-mi { max-width: 680px; margin: 0 auto; padding: 96px 24px; }
+.sobre-mi h2 { color: var(--accent); }
+.sobre-mi p { font-size: 1.15rem; color: #d6d3cc; }
+
+.peu { text-align: center; color: var(--suau); font-size: .85rem; padding: 32px 24px; border-top: 1px solid #222; }
+
+.visor {
+  position: fixed; inset: 0; z-index: 10;
+  background: rgba(0, 0, 0, .95);
+  display: flex; align-items: center; justify-content: center;
+}
+.visor[hidden] { display: none; }
+.visor figure { margin: 0; text-align: center; }
+.visor img { max-width: 92vw; max-height: 84vh; }
+.visor figcaption { color: var(--suau); margin-top: 10px; }
+.visor button {
+  position: absolute; background: none; border: 0; color: var(--text);
+  font-size: 3rem; cursor: pointer; padding: 12px 18px; opacity: .7;
+}
+.visor button:hover { opacity: 1; }
+.tancar { top: 8px; right: 12px; }
+.anterior { left: 4px; }
+.seguent { right: 4px; }
+
+@media (max-width: 600px) {
+  .capcalera { padding: 14px 16px; }
+  .portada, main { padding-left: 16px; padding-right: 16px; }
+  .graella { columns: 2; column-gap: 8px; }
+  .foto { margin-bottom: 8px; }
+  .anterior, .seguent { display: none; }
+}

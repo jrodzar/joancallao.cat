@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Joan Callao · Fotografia</title>
+  <meta name="description" content="Portfoli de fotografia d'en Joan Callao.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estil.css">
+</head>
+<body>
+  <header class="capcalera">
+    <a class="logo" href="#">JOAN CALLAO</a>
+    <nav>
+      <a href="#galeria">Fotos</a>
+      <a href="#sobre-mi">Sobre mi</a>
+    </nav>
+  </header>
+
+  <section class="portada">
+    <p class="petit">Fotografia</p>
+    <h1>Miro el món<br>a través de l'objectiu.</h1>
+  </section>
+
+  <main id="galeria">
+    <div class="filtres" role="toolbar" aria-label="Filtrar per tema"></div>
+    <div class="graella"></div>
+  </main>
+
+  <section id="sobre-mi" class="sobre-mi">
+    <h2>Sobre mi</h2>
+    <p>Hola! Sóc en Joan, tinc 13 anys i m'encanta fer fotos. Aquí hi penjo les que més m'agraden: natura, ciutat, animals i la gent que m'envolta.</p>
+  </section>
+
+  <footer class="peu">© <span id="any"></span> Joan Callao · Totes les fotos són meves, si en vols fer servir alguna, pregunta-m'ho!</footer>
+
+  <div class="visor" hidden>
+    <button class="tancar" aria-label="Tancar">×</button>
+    <button class="anterior" aria-label="Anterior">‹</button>
+    <figure><img alt=""><figcaption></figcaption></figure>
+    <button class="seguent" aria-label="Següent">›</button>
+  </div>
+
+  <script src="fotos.js"></script>
+  <script src="galeria.js"></script>
+</body>
+</html>
