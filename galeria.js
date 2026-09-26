@@ -28,6 +28,11 @@ async function llegeixTemes() {
   }
 }
 
+// Text alternatiu per a qui no pot veure la foto (lectors de pantalla, cercadors)
+function textAlternatiu(foto) {
+  return foto.titol || "Foto d'en Joan Callao";
+}
+
 function normalitza(tema) {
   return String(tema || "").trim().toLowerCase();
 }
@@ -96,7 +101,7 @@ function pinta() {
     b.className = "foto";
     const img = document.createElement("img");
     img.src = foto.foto;
-    img.alt = foto.titol || "";
+    img.alt = textAlternatiu(foto);
     img.loading = "lazy";
     b.appendChild(img);
     b.onclick = () => obre(i);
@@ -108,8 +113,9 @@ function obre(i) {
   actual = (i + visibles.length) % visibles.length;
   const foto = visibles[actual];
   visorImg.src = foto.foto;
-  visorImg.alt = foto.titol || "";
+  visorImg.alt = textAlternatiu(foto);
   visorText.textContent = foto.titol || "";
+  visorText.hidden = !foto.titol;
   visor.hidden = false;
   document.body.style.overflow = "hidden";
 }

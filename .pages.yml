@@ -21,7 +21,9 @@ content:
         required: true
       - name: titol
         label: Títol
+        description: Opcional. Surt a sota de la foto quan s'obre en gran.
         type: string
+        required: false
       - name: tema
         label: Tema
         description: Tria'n un de la llista. Per crear-ne de nous, ves a l'apartat Temes.
