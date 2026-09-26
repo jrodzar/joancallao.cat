@@ -56,6 +56,13 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 .foto:hover img { transform: scale(1.03); opacity: .9; }
 
 .sobre-mi { max-width: 680px; margin: 0 auto; padding: 96px 24px; }
+.sobre-mi.amb-retrat {
+  max-width: 1000px;
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 48px; align-items: center;
+}
+.retrat { display: block; width: 100%; height: auto; border-radius: 4px; }
+.retrat[hidden] { display: none; }
 .sobre-mi h2 { color: var(--accent); }
 .sobre-mi p { white-space: pre-line; font-size: 1.15rem; color: #d6d3cc; }
 .segueix-me a { color: var(--accent); }
@@ -89,4 +96,6 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
   .graella { columns: 2; column-gap: 8px; }
   .foto { margin-bottom: 8px; }
   .anterior, .seguent { display: none; }
+  .sobre-mi, .sobre-mi.amb-retrat { display: block; padding: 64px 16px; }
+  .retrat { margin-bottom: 8px; }
 }

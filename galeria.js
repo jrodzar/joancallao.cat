@@ -47,6 +47,7 @@ async function inicia() {
   document.getElementById("titol-portada").textContent = textos.titol_portada || "";
   document.getElementById("text-sobre-mi").textContent = textos.sobre_mi || "";
   mostraInstagram(textos.instagram);
+  mostraRetrat(textos.foto_sobre_mi);
 
   fotos = llista
     .filter(f => f && f.foto)
@@ -55,6 +56,14 @@ async function inicia() {
 
   pintaFiltres(temes);
   pinta();
+}
+
+function mostraRetrat(foto) {
+  if (!foto) return;
+  const retrat = document.querySelector(".retrat");
+  retrat.src = foto;
+  retrat.hidden = false;
+  document.getElementById("sobre-mi").classList.add("amb-retrat");
 }
 
 // Accepta "nom", "@nom" o l'adreça sencera del perfil
