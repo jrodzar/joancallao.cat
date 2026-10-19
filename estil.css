@@ -17,25 +17,18 @@ body {
 
 a { color: inherit; text-decoration: none; }
 
-/* El logo va centrat a sobre del nom: una còpia invisible del nom li dona l'amplada,
-   i el logo en fa una mica més i sobresurt igual pels dos costats */
-.logo-dalt {
-  display: flex; flex-direction: column; align-items: center;
-  width: fit-content; padding: 20px 24px 0;
-}
-.logo-dalt img { display: block; width: 0; min-width: 120%; height: auto; }
-.mida-nom { height: 0; overflow: hidden; visibility: hidden; }
+.logo-dalt { display: block; width: fit-content; padding: 20px 24px 0; }
+.logo-dalt img { display: block; width: 180px; height: auto; }
 
 .capcalera {
   position: sticky; top: 0; z-index: 5;
-  display: flex; justify-content: space-between; align-items: center;
+  display: flex; align-items: center;
   padding: 18px 24px;
   background: rgba(15, 15, 16, .85);
   backdrop-filter: blur(8px);
 }
-.logo, .mida-nom { font-weight: 700; letter-spacing: .15em; white-space: nowrap; }
-.capcalera nav { white-space: nowrap; }
-.capcalera nav a { margin-left: 22px; color: var(--suau); }
+.capcalera nav { display: flex; gap: 22px; white-space: nowrap; }
+.capcalera nav a { color: var(--suau); }
 .capcalera nav a:hover { color: var(--text); }
 
 .portada { padding: 72px 24px 40px; max-width: 1200px; margin: 0 auto; }
@@ -99,10 +92,11 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
 @media (max-width: 600px) {
   .capcalera { padding: 14px 16px; }
-  .logo, .mida-nom { letter-spacing: .08em; font-size: .9rem; }
-  .capcalera nav a { margin-left: 12px; font-size: .9rem; }
+  .capcalera nav { gap: 16px; }
+  .capcalera nav a { font-size: .9rem; }
   .portada, main { padding-left: 16px; padding-right: 16px; }
   .logo-dalt { padding: 16px 16px 0; }
+  .logo-dalt img { width: 150px; }
   .graella { columns: 2; column-gap: 8px; }
   .foto { margin-bottom: 8px; }
   .anterior, .seguent { display: none; }
