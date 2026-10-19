@@ -17,12 +17,13 @@ body {
 
 a { color: inherit; text-decoration: none; }
 
-/* El logo va centrat a sobre del nom: una còpia invisible del nom li dona l'amplada */
+/* El logo va centrat a sobre del nom: una còpia invisible del nom li dona l'amplada,
+   i el logo en fa una mica més i sobresurt igual pels dos costats */
 .logo-dalt {
   display: flex; flex-direction: column; align-items: center;
   width: fit-content; padding: 20px 24px 0;
 }
-.logo-dalt img { display: block; width: 96px; height: auto; }
+.logo-dalt img { display: block; width: 0; min-width: 120%; height: auto; }
 .mida-nom { height: 0; overflow: hidden; visibility: hidden; }
 
 .capcalera {
@@ -102,7 +103,6 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
   .capcalera nav a { margin-left: 12px; font-size: .9rem; }
   .portada, main { padding-left: 16px; padding-right: 16px; }
   .logo-dalt { padding: 16px 16px 0; }
-  .logo-dalt img { width: 72px; }
   .graella { columns: 2; column-gap: 8px; }
   .foto { margin-bottom: 8px; }
   .anterior, .seguent { display: none; }
